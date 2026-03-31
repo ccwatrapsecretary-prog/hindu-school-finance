@@ -280,6 +280,64 @@ tr:hover td{background:var(--surface2);}
 @media(max-width:800px){.cg{grid-template-columns:1fr;}.cc.wide{grid-column:span 1;}.cmp-grid{grid-template-columns:1fr;}.cg3{grid-template-columns:1fr;}}
 @media(max-width:550px){.main{padding:1rem;}.stat-grid{grid-template-columns:1fr 1fr;}}
 @media print{#login-screen,#cloud-bar,.mright,.school-bar,.tabs,.phr,.fs,.mov,.progress-overlay{display:none!important;}body{background:white;color:#111;}.stat-card,.cc,.tc,.bank-card{border:1px solid #ccc!important;background:white!important;}}
+
+/* ── FUTURISTIC ADDITIONS ── */
+/* Dark/Light mode toggle */
+body.light-mode{
+  --bg:#f0f4f8;--bg2:#e8edf3;--surface:#ffffff;--surface2:#f5f7fa;--surface3:#edf0f5;
+  --border:#d0d9e8;--border2:#b8c5d9;--text:#1a2640;--text-dim:#5a7090;--text-muted:#9ab0cc;
+}
+/* Live clock */
+#live-clock{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--teal2);display:flex;align-items:center;gap:5px;letter-spacing:.05em;}
+#live-clock .clk-sep{animation:blink 1s step-start infinite;}
+@keyframes blink{50%{opacity:0;}}
+/* Mode toggle btn */
+.btn-mode{background:transparent;border:1px solid var(--border2);color:var(--text-dim);font-size:.82rem;padding:4px 10px;border-radius:8px;cursor:pointer;transition:all .25s;}
+.btn-mode:hover{border-color:var(--saffron);color:var(--saffron);}
+/* Alert Panel */
+#alert-panel{position:fixed;bottom:20px;right:20px;z-index:800;display:flex;flex-direction:column;gap:7px;max-width:340px;}
+.alert-toast{background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:9px 14px;font-size:.75rem;color:var(--text);display:flex;align-items:flex-start;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.4);animation:slideIn .3s ease;position:relative;cursor:pointer;}
+.alert-toast.alert-warn{border-left:4px solid var(--saffron);}
+.alert-toast.alert-ok{border-left:4px solid var(--green2);}
+.alert-toast.alert-err{border-left:4px solid var(--rose);}
+.alert-toast.alert-info{border-left:4px solid var(--teal2);}
+.alert-icon{font-size:.95rem;flex-shrink:0;}
+.alert-close{position:absolute;top:5px;right:8px;cursor:pointer;color:var(--text-muted);font-size:.8rem;}
+@keyframes slideIn{from{transform:translateX(120%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes fadeOut{to{opacity:0;transform:translateX(120%);}}
+/* Animated counters */
+.sval.counting{transition:all .4s;}
+/* Keyboard shortcut modal */
+#kb-modal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:600;display:flex;align-items:center;justify-content:center;}
+#kb-box{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:1.8rem;width:500px;max-width:95vw;max-height:85vh;overflow-y:auto;}
+.kb-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:.8rem;}
+.kb-key{background:var(--surface2);border:1px solid var(--border2);border-radius:5px;padding:2px 8px;font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--teal2);}
+/* AI Forecast section */
+.ai-card{background:linear-gradient(135deg,rgba(22,160,133,.12),rgba(142,68,173,.08));border:1px solid rgba(22,160,133,.3);border-radius:var(--radius);padding:1.2rem;margin-bottom:1rem;position:relative;overflow:hidden;}
+.ai-card::before{content:"🤖";position:absolute;right:12px;bottom:8px;font-size:3rem;opacity:.06;}
+.ai-title{font-size:.74rem;font-weight:700;color:var(--teal2);text-transform:uppercase;letter-spacing:.09em;margin-bottom:.7rem;}
+.ai-insight{font-size:.82rem;color:var(--text);line-height:1.6;padding:8px 12px;background:var(--surface2);border-radius:8px;border-left:3px solid var(--teal2);margin-bottom:.5rem;}
+.ai-thinking{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text-dim);}
+.ai-dot{width:6px;height:6px;border-radius:50%;background:var(--teal2);animation:pulse 1s infinite;}
+.ai-dot:nth-child(2){animation-delay:.2s;}
+.ai-dot:nth-child(3){animation-delay:.4s;}
+/* Defaulter tracker */
+.def-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:1rem;margin-bottom:.7rem;}
+.def-bar{height:8px;border-radius:4px;background:var(--surface2);margin-top:5px;overflow:hidden;}
+.def-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green2),var(--teal2));transition:width .6s ease;}
+.def-fill.low{background:linear-gradient(90deg,var(--rose),#ff9f43);}
+/* PDF loading */
+.pdf-spin{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-left:6px;display:none;}
+/* Glassmorph upgrade for stat-cards */
+.stat-card{backdrop-filter:blur(4px);}
+/* Quick actions bar */
+.quick-actions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1rem;padding:10px 14px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);}
+.qa-label{font-size:.67rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;margin-right:4px;}
+/* Futuristic tab bar glow */
+.tab.active{color:var(--saffron);border-bottom-color:var(--saffron);text-shadow:0 0 12px rgba(245,166,35,.4);}
+/* WhatsApp button */
+.btn-wa{background:#25d366;color:#fff;font-weight:600;}
+.btn-wa:hover{background:#1da851;}
 </style>
 </head>
 <body>
@@ -302,6 +360,9 @@ tr:hover td{background:var(--surface2);}
       Username: <span style="color:var(--saffron)">accountant</span> &nbsp;|&nbsp; Password: <span style="color:var(--saffron)">acc2024</span>
     </div>
     <div class="lock-box" id="lock-box">🔐 Locked. Try again in <span id="lock-sec">60</span>s</div>
+    <div style="margin-top:.8rem;text-align:center;">
+      <button onclick="resetCredentials()" style="background:none;border:none;color:var(--text-muted);font-size:.68rem;cursor:pointer;text-decoration:underline;font-family:'DM Sans',sans-serif;">⚠ Reset to default credentials</button>
+    </div>
   </div>
 </div>
 
@@ -334,10 +395,15 @@ tr:hover td{background:var(--surface2);}
       </div>
     </div>
     <div class="mright">
+      <div id="live-clock"><span id="clk-h">--</span><span class="clk-sep">:</span><span id="clk-m">--</span><span class="clk-sep">:</span><span id="clk-s">--</span></div>
       <span class="ubadge" id="ubadge">👤</span>
+      <button class="btn-mode" onclick="toggleMode()" id="mode-btn" title="Toggle Light/Dark">🌙</button>
       <button class="btn btn-outline btn-sm" onclick="syncNow()">🔄 Sync</button>
+      <button class="btn btn-outline btn-sm" onclick="exportPDF()" id="pdf-btn">📄 PDF <span class="pdf-spin" id="pdf-spin"></span></button>
+      <button class="btn btn-outline btn-sm" style="background:rgba(37,211,102,.12);border-color:#25d366;color:#25d366;" onclick="shareWhatsApp()">🟢 Share</button>
       <button class="btn btn-outline btn-sm" onclick="printReport()">🖨 Print</button>
       <button class="btn btn-outline btn-sm" onclick="exportCSV()">↓ CSV</button>
+      <button class="btn btn-outline btn-sm" onclick="showKB()" title="Keyboard shortcuts (?)" style="font-size:.85rem;">⌨</button>
       <button class="btn btn-rose btn-sm" onclick="doLogout()">Logout</button>
     </div>
   </div>
@@ -360,6 +426,8 @@ tr:hover td{background:var(--surface2);}
     <div class="tab" data-tab="expense" onclick="switchTab(this,'expense')">💸 Expense</div>
     <div class="tab" data-tab="remittance" onclick="switchTab(this,'remittance')">🔄 Remittance</div>
     <div class="tab" data-tab="vans" onclick="switchTab(this,'vans')">🚐 Van Finance</div>
+    <div class="tab" data-tab="defaulter" onclick="switchTab(this,'defaulter')">⚠ Fee Tracker</div>
+    <div class="tab" data-tab="aiforecast" onclick="switchTab(this,'aiforecast')">🤖 AI Forecast</div>
     <div class="tab" data-tab="compare" onclick="switchTab(this,'compare')">📈 Year Compare</div>
     <div class="tab" data-tab="entry" onclick="switchTab(this,'entry')">➕ Add Entry</div>
     <div class="tab" data-tab="config" onclick="switchTab(this,'config')">⚙ Van Config</div>
@@ -373,6 +441,15 @@ tr:hover td{background:var(--surface2);}
 
 <!-- DASHBOARD -->
 <section class="section active" id="sec-dashboard">
+  <div class="quick-actions">
+    <span class="qa-label">⚡ Quick:</span>
+    <button class="btn btn-outline btn-sm" onclick="switchTab(document.querySelector('[data-tab=entry]'),'entry')">+ Add Entry</button>
+    <button class="btn btn-outline btn-sm" onclick="switchTab(document.querySelector('[data-tab=aiforecast]'),'aiforecast')">🤖 AI Forecast</button>
+    <button class="btn btn-outline btn-sm" onclick="switchTab(document.querySelector('[data-tab=defaulter]'),'defaulter')">⚠ Fee Tracker</button>
+    <button class="btn btn-outline btn-sm" onclick="exportPDF()">📄 Generate PDF</button>
+    <button class="btn btn-outline btn-sm" onclick="shareWhatsApp()">🟢 WhatsApp</button>
+    <button class="btn btn-outline btn-sm" onclick="showKB()">⌨ Shortcuts</button>
+  </div>
   <div class="page-hdr">
     <div><h2 id="dash-title">Dashboard</h2><div class="sub" id="dash-sub"></div></div>
     <div class="phr"><select class="sel" id="dash-year" onchange="renderDashboard()"></select></div>
@@ -487,6 +564,59 @@ tr:hover td{background:var(--surface2);}
     <div class="cc wide"><div class="ct">Monthly Van Revenue Trends <em>Multi-line</em></div><div class="cw md"><canvas id="c-van-m"></canvas></div></div>
   </div>
   <div class="tc"><div class="th"><h3>Van Transactions</h3></div><div class="tw"><table id="t-vans"></table></div></div>
+</section>
+
+<!-- FEE DEFAULTER TRACKER -->
+<section class="section" id="sec-defaulter">
+  <div class="page-hdr">
+    <div><h2>⚠ Fee Collection Tracker</h2><div class="sub">Track expected vs actual van fee collections per route</div></div>
+    <div class="phr">
+      <select class="sel" id="def-year" onchange="renderDefaulter()"></select>
+      <select class="sel" id="def-month" onchange="renderDefaulter()">
+        <option value="all">All Months</option>
+        <option value="0">April</option><option value="1">May</option><option value="2">June</option>
+        <option value="3">July</option><option value="4">August</option><option value="5">September</option>
+        <option value="6">October</option><option value="7">November</option><option value="8">December</option>
+        <option value="9">January</option><option value="10">February</option><option value="11">March</option>
+      </select>
+    </div>
+  </div>
+  <div class="stat-grid" id="def-stats"></div>
+  <div class="sl">Van-wise Collection Status</div>
+  <div id="def-cards"></div>
+  <div class="tc"><div class="th"><h3>Collection Details</h3></div><div class="tw"><table id="t-defaulter"></table></div></div>
+</section>
+
+<!-- AI FORECAST -->
+<section class="section" id="sec-aiforecast">
+  <div class="page-hdr">
+    <div><h2>🤖 AI Budget Forecast</h2><div class="sub">Claude AI analyses your financial patterns and generates smart predictions</div></div>
+    <div class="phr">
+      <select class="sel" id="ai-year" onchange=""></select>
+      <button class="btn btn-saffron" onclick="runAIForecast()" id="ai-btn">✨ Generate Forecast</button>
+    </div>
+  </div>
+  <div class="ai-card" id="ai-status-card">
+    <div class="ai-title">🤖 AI Financial Intelligence</div>
+    <div style="font-size:.82rem;color:var(--text-dim);line-height:1.7;">
+      Click <strong style="color:var(--saffron)">Generate Forecast</strong> to have Claude AI analyse your income/expense trends and generate:<br>
+      • Next quarter income prediction per school<br>
+      • Expense anomaly detection<br>
+      • Van fee optimisation suggestions<br>
+      • Year-end surplus/deficit forecast<br>
+      • Actionable budget recommendations
+    </div>
+  </div>
+  <div id="ai-output" style="display:none;">
+    <div class="ai-card" id="ai-thinking-card" style="display:none;">
+      <div class="ai-thinking"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span style="margin-left:4px;font-size:.78rem;color:var(--text-dim)">Claude is analysing your financial data...</span></div>
+    </div>
+    <div id="ai-insights"></div>
+    <div class="cg" id="ai-charts" style="display:none;">
+      <div class="cc"><div class="ct">Predicted Income — Next 3 Months</div><div class="cw md"><canvas id="c-ai-pred"></canvas></div></div>
+      <div class="cc"><div class="ct">Budget Health Score</div><div class="cw md"><canvas id="c-ai-health"></canvas></div></div>
+    </div>
+  </div>
 </section>
 
 <!-- COMPARE -->
@@ -672,6 +802,31 @@ tr:hover td{background:var(--surface2);}
 </div>
 
 </div><!-- end app-screen -->
+
+<!-- ALERT PANEL -->
+<div id="alert-panel"></div>
+
+<!-- KEYBOARD SHORTCUTS MODAL -->
+<div id="kb-modal" style="display:none;" onclick="if(event.target===this)hideKB()">
+  <div id="kb-box">
+    <div class="mtitle">⌨ Keyboard Shortcuts</div>
+    <div class="kb-row"><span>Dashboard</span><span class="kb-key">Alt + 1</span></div>
+    <div class="kb-row"><span>Banking</span><span class="kb-key">Alt + 2</span></div>
+    <div class="kb-row"><span>Income</span><span class="kb-key">Alt + 3</span></div>
+    <div class="kb-row"><span>Expense</span><span class="kb-key">Alt + 4</span></div>
+    <div class="kb-row"><span>Add Entry</span><span class="kb-key">Alt + E</span></div>
+    <div class="kb-row"><span>AI Forecast</span><span class="kb-key">Alt + A</span></div>
+    <div class="kb-row"><span>Fee Tracker</span><span class="kb-key">Alt + F</span></div>
+    <div class="kb-row"><span>Year Compare</span><span class="kb-key">Alt + C</span></div>
+    <div class="kb-row"><span>Sync Cloud</span><span class="kb-key">Alt + S</span></div>
+    <div class="kb-row"><span>Export PDF</span><span class="kb-key">Alt + P</span></div>
+    <div class="kb-row"><span>Export CSV</span><span class="kb-key">Alt + X</span></div>
+    <div class="kb-row"><span>Toggle Dark/Light</span><span class="kb-key">Alt + D</span></div>
+    <div class="kb-row"><span>Keyboard Shortcuts</span><span class="kb-key">?</span></div>
+    <div class="kb-row"><span>Close Modal</span><span class="kb-key">Esc</span></div>
+    <div class="mact"><button class="btn btn-outline" onclick="hideKB()">Close</button></div>
+  </div>
+</div>
 
 <script>
 // ═══════════════ CONFIG ═══════════════
@@ -913,6 +1068,10 @@ function showMsg(id,msg,ok=true){const el=document.getElementById(id);if(el){el.
 function doLogin(){
   const now=Date.now();
   if(lockUntil>now){startLock();return;}
+  // Always re-load users fresh before checking (catches stale state)
+  const sus=LSG("hhs_users");
+  if(sus&&sus.length>0)USERS=sus;
+  else USERS=[{name:"admin",pass:"hindu1878",role:"admin"},{name:"accountant",pass:"acc2024",role:"accountant"}];
   const u=document.getElementById("l-user").value.trim();
   const p=document.getElementById("l-pass").value;
   const user=USERS.find(x=>x.name===u&&x.pass===p);
@@ -954,6 +1113,22 @@ function startLock(){
   },1000);
 }
 function doLogout(){CU=null;loginAttempts=0;document.getElementById("login-screen").style.display="flex";document.getElementById("app-screen").style.display="none";document.getElementById("l-pass").value="";document.getElementById("hint-box").style.display="none";document.getElementById("lerr").style.display="none";document.getElementById("att-left").style.display="none";}
+
+function resetCredentials(){
+  if(!confirm("This will reset login credentials to:\n\nUsername: admin\nPassword: hindu1878\n\nContinue?"))return;
+  const def=[{name:"admin",pass:"hindu1878",role:"admin"},{name:"accountant",pass:"acc2024",role:"accountant"}];
+  USERS=def;
+  try{localStorage.setItem("hhs_users",JSON.stringify(def));}catch(e){}
+  // Also clear lock
+  lockUntil=0;loginAttempts=0;
+  if(lockTmr){clearInterval(lockTmr);lockTmr=null;}
+  const lb=document.getElementById("lock-box");if(lb)lb.style.display="none";
+  const btn=document.getElementById("login-btn");if(btn)btn.disabled=false;
+  const lerr=document.getElementById("lerr");if(lerr)lerr.style.display="none";
+  const att=document.getElementById("att-left");if(att)att.style.display="none";
+  const hint=document.getElementById("hint-box");if(hint)hint.style.display="block";
+  alert("✅ Credentials reset!\n\nUsername: admin\nPassword: hindu1878");
+}
 
 // ═══════════════ USERS ═══════════════
 function addUser(){const n=document.getElementById("u-name").value.trim();const p=document.getElementById("u-pass").value;const r=document.getElementById("u-role").value;if(!n||!p){alert("Fill all fields.");return;}const i=USERS.findIndex(x=>x.name===n);if(i>=0)USERS[i]={name:n,pass:p,role:r};else USERS.push({name:n,pass:p,role:r});saveLocal();saveConfigToCloud();renderUsersTable();showMsg("umsg","✓ Saved!");}
@@ -1161,13 +1336,15 @@ function renderCurrent(){
   else if(CT==="expense")renderExpense();
   else if(CT==="remittance")renderRemittance();
   else if(CT==="vans")renderVans();
+  else if(CT==="defaulter")renderDefaulter();
+  else if(CT==="aiforecast"){syncNewSectionYears();}
   else if(CT==="compare")renderCompare();
   else if(CT==="config")renderVanConfig();
   else if(CT==="years")renderYearsList();
   else if(CT==="users")renderUsersTable();
   else if(CT==="records")renderRecords();
 }
-function renderAll(){refreshYearSelects();renderVanConfig();renderBulkRows();refreshVanDDs();renderCurrent();}
+function renderAll(){refreshYearSelects();syncNewSectionYears();renderVanConfig();renderBulkRows();refreshVanDDs();renderCurrent();}
 
 // ═══════════════ DASHBOARD ═══════════════
 function renderDashboard(){
@@ -1352,18 +1529,298 @@ async function initApp(){
   // Update van acno display
   const vd=document.getElementById("van-acno-display");if(vd)vd.textContent=BANKACCTS.van.acNo;
   // Show local data instantly
-  if(DB.length>0)renderAll();
+  if(DB.length>0){renderAll();renderDefaulter();}
   // Then load from cloud
   const ok=await loadFromCloud();
-  if(ok){refreshYearSelects();refreshVanDDs();renderAll();}
-  else if(DB.length===0){seedData();renderAll();}
+  if(ok){refreshYearSelects();refreshVanDDs();renderAll();renderDefaulter();runSmartAlerts();}
+  else if(DB.length===0){seedData();renderAll();renderDefaulter();}
+  else{runSmartAlerts();}
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
-  loadLocal();
-  // Focus username field
-  const uf=document.getElementById("l-user");if(uf)uf.focus();
+
+// ═══════════════ LIVE CLOCK ═══════════════
+function tickClock(){
+  const n=new Date();
+  const pad=v=>String(v).padStart(2,'0');
+  document.getElementById('clk-h').textContent=pad(n.getHours());
+  document.getElementById('clk-m').textContent=pad(n.getMinutes());
+  document.getElementById('clk-s').textContent=pad(n.getSeconds());
+}
+tickClock();setInterval(tickClock,1000);
+
+// ═══════════════ DARK/LIGHT MODE ═══════════════
+function toggleMode(){
+  document.body.classList.toggle('light-mode');
+  const btn=document.getElementById('mode-btn');
+  if(btn)btn.textContent=document.body.classList.contains('light-mode')?'🌒':'🌙';
+}
+
+// ═══════════════ SMART ALERTS ═══════════════
+let alertId=0;
+function showAlert(msg,type='info',duration=5000){
+  const panel=document.getElementById('alert-panel');if(!panel)return;
+  const icons={info:'ℹ️',warn:'⚠️',ok:'✅',err:'❌'};
+  const id=++alertId;
+  const div=document.createElement('div');
+  div.className=`alert-toast alert-${type}`;
+  div.id=`alert-${id}`;
+  div.innerHTML=`<span class="alert-icon">${icons[type]||'ℹ️'}</span><div style="flex:1">${msg}</div><span class="alert-close" onclick="closeAlert(${id})">✕</span>`;
+  panel.appendChild(div);
+  if(duration>0)setTimeout(()=>closeAlert(id),duration);
+}
+function closeAlert(id){
+  const el=document.getElementById('alert-'+id);
+  if(el){el.style.animation='fadeOut .3s ease forwards';setTimeout(()=>el.remove(),300);}
+}
+
+// ═══════════════ ANIMATED COUNTERS ═══════════════
+function animateValue(el,start,end,dur=700){
+  if(!el)return;const range=end-start;const startT=performance.now();
+  function update(now){
+    const elapsed=now-startT;const prog=Math.min(elapsed/dur,1);
+    const eased=1-Math.pow(1-prog,3);
+    const cur=Math.round(start+range*eased);
+    el.textContent='₹'+cur.toLocaleString('en-IN');
+    if(prog<1)requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// ═══════════════ KEYBOARD SHORTCUTS ═══════════════
+function showKB(){const m=document.getElementById('kb-modal');if(m)m.style.display='flex';}
+function hideKB(){const m=document.getElementById('kb-modal');if(m)m.style.display='none';}
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA')return;
+  if(document.getElementById('login-screen')?.style.display!=='none')return;
+  if(e.key==='?'&&!e.altKey){showKB();return;}
+  if(e.key==='Escape'){hideKB();return;}
+  if(!e.altKey)return;
+  const tabs={'1':'dashboard','2':'banking','3':'income','4':'expense','e':'entry','a':'aiforecast','f':'defaulter','c':'compare','s':null,'p':null,'x':null,'d':null};
+  const k=e.key.toLowerCase();
+  if(k==='s'){e.preventDefault();syncNow();}
+  else if(k==='p'){e.preventDefault();exportPDF();}
+  else if(k==='x'){e.preventDefault();exportCSV();}
+  else if(k==='d'){e.preventDefault();toggleMode();}
+  else if(tabs[k]!==undefined&&tabs[k]!==null){
+    e.preventDefault();
+    const tab=document.querySelector(`[data-tab="${tabs[k]}"]`);
+    if(tab)switchTab(tab,tabs[k]);
+  }
 });
+
+// ═══════════════ PDF EXPORT ═══════════════
+async function exportPDF(){
+  const spin=document.getElementById('pdf-spin');
+  const btn=document.getElementById('pdf-btn');
+  if(spin)spin.style.display='inline-block';
+  if(btn)btn.disabled=true;
+  showAlert('Generating PDF report...','info',3000);
+  await new Promise(r=>setTimeout(r,400));
+  const year=document.getElementById('dash-year')?.value||YEARS[0];
+  const sf=CS==="combined"?"all":CS;
+  const tI=sum(qry({school:sf,year,type:"income"}));
+  const tE=sum(qry({school:sf,year,type:"expense"}));
+  const net=tI-tE;
+  const schoolName=CS==="combined"?"All Schools":SCHOOLS[CS]?.name||CS;
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Finance Report</title><style>
+    body{font-family:Arial,sans-serif;margin:40px;color:#1a2640;}
+    h1{color:#8b1a1a;border-bottom:2px solid #f5a623;padding-bottom:10px;}
+    h2{color:#07101e;margin-top:30px;}
+    .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin:20px 0;}
+    .card{border:1px solid #ddd;border-radius:8px;padding:15px;text-align:center;}
+    .card.inc{border-top:4px solid #27ae60;}.card.exp{border-top:4px solid #e74c3c;}.card.net{border-top:4px solid #ffd700;}
+    .amount{font-size:1.4rem;font-weight:bold;margin-top:5px;}
+    .inc .amount{color:#27ae60;}.exp .amount{color:#e74c3c;}.net .amount{color:#e67e22;}
+    .label{font-size:.75rem;color:#666;text-transform:uppercase;letter-spacing:.08em;}
+    table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.85rem;}
+    th{background:#07101e;color:#fff;padding:8px;text-align:left;}
+    td{padding:7px 8px;border-bottom:1px solid #eee;}
+    tr:nth-child(even) td{background:#f9f9f9;}
+    .footer{margin-top:40px;border-top:1px solid #ddd;padding-top:10px;font-size:.7rem;color:#999;}
+  </style></head><body>
+  <h1>Hindu High School — Financial Report</h1>
+  <p><strong>School:</strong> ${schoolName} &nbsp;|&nbsp; <strong>FY:</strong> ${yrL(year)} &nbsp;|&nbsp; <strong>Generated:</strong> ${new Date().toLocaleString('en-IN')}</p>
+  <div class="grid">
+    <div class="card inc"><div class="label">Total Income</div><div class="amount">${fmt(tI)}</div></div>
+    <div class="card exp"><div class="label">Total Expense</div><div class="amount">${fmt(tE)}</div></div>
+    <div class="card net"><div class="label">Net Surplus</div><div class="amount">${fmt(net)}</div></div>
+  </div>
+  <h2>Bank-wise Summary</h2>
+  <table><thead><tr><th>Account</th><th>Bank</th><th>A/c No.</th><th>Credits</th><th>Debits</th><th>Balance</th></tr></thead><tbody>
+  ${Object.values(BANKACCTS).map(ba=>`<tr><td>${ba.label}</td><td>${ba.bankName}</td><td>${ba.acNo}</td><td>${fmt(sum(qry({school:sf,year,type:"income",debitAcct:ba.key})))}</td><td>${fmt(sum(qry({school:sf,year,type:"expense",debitAcct:ba.key})))}</td><td>${fmt(getBal(ba.key,year,sf))}</td></tr>`).join('')}
+  </tbody></table>
+  <h2>Category-wise Income</h2>
+  <table><thead><tr><th>Category</th><th>Amount</th><th>Entries</th></tr></thead><tbody>
+  ${[...new Set(qry({school:sf,year,type:"income"}).map(e=>e.category))].map(cat=>{const es=qry({school:sf,year,type:"income"}).filter(e=>e.category===cat);return`<tr><td>${cat}</td><td>${fmt(sum(es))}</td><td>${es.length}</td></tr>`;}).join('')}
+  </tbody></table>
+  <div class="footer">Hindu High School & Chathiram Committee, Watrap | Finance Portal | Printed by ${CU?.name||'User'}</div>
+  </body></html>`;
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`HHS_Finance_${schoolName.replace(/ /g,'_')}_FY${yrL(year)}.html`;a.click();
+  if(spin)spin.style.display='none';
+  if(btn)btn.disabled=false;
+  showAlert('✅ PDF-ready HTML downloaded! Open in browser & Print → Save as PDF','ok',6000);
+}
+
+// ═══════════════ WHATSAPP SHARE ═══════════════
+function shareWhatsApp(){
+  const year=document.getElementById('dash-year')?.value||YEARS[0];
+  const sf=CS==="combined"?"all":CS;
+  const tI=sum(qry({school:sf,year,type:"income"}));
+  const tE=sum(qry({school:sf,year,type:"expense"}));
+  const net=tI-tE;
+  const school=CS==="combined"?"All Schools":SCHOOLS[CS]?.name||CS;
+  const msg=`🏫 *Hindu High School Finance Summary*\n📅 FY ${yrL(year)} | ${school}\n\n💰 Income: *${fmt(tI)}*\n💸 Expense: *${fmt(tE)}*\n📊 Net Surplus: *${fmt(net)}*\n\n🏦 Bank Balances:\n✅ Aided A/c: ${fmt(getBal('aided',year,sf))}\n✅ Self Finance A/c: ${fmt(getBal('self',year,sf))}\n✅ Van A/c: ${fmt(getBal('van',year,sf))}\n\n_Generated from HHS Finance Portal_`;
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ═══════════════ FEE DEFAULTER / TRACKER ═══════════════
+function renderDefaulter(){
+  syncNewSectionYears();
+  const year=document.getElementById('def-year')?.value||String(YEARS[0]);
+  const month=document.getElementById('def-month')?.value||'all';
+  const sf=CS==="combined"?"all":CS;
+  // Compute expected (based on van config × avg students estimated per entry)
+  let totalExpected=0,totalActual=0;
+  const rows=[];
+  VCFG.forEach(vn=>{
+    const schools=sf==="all"?["ps","ghs","hss"]:[sf];
+    schools.forEach(sch=>{
+      const entries=qry({school:sch,year,type:"income",van:vn.id,vanOnly:true})
+        .filter(e=>month==="all"||String(e.month)===String(month));
+      const actual=sum(entries);
+      // Estimate expected: fee × 25 students (average baseline)
+      const fee=(vn.fees[sch]||800);
+      const months=month==="all"?12:1;
+      const expected=fee*25*months;
+      totalExpected+=expected;totalActual+=actual;
+      const pct=expected>0?Math.min((actual/expected)*100,100):0;
+      rows.push({van:vn.name,school:SCHOOLS[sch]?.short||sch,expected,actual,pct,fee,months});
+    });
+  });
+  const defStats=document.getElementById('def-stats');
+  if(defStats)defStats.innerHTML=`
+    <div class="stat-card s-info"><div class="slbl">Expected Total</div><div class="sval" style="color:var(--teal2)">${fmt(totalExpected)}</div></div>
+    <div class="stat-card s-inc"><div class="slbl">Collected</div><div class="sval">${fmt(totalActual)}</div></div>
+    <div class="stat-card s-exp"><div class="slbl">Shortfall</div><div class="sval">${fmt(Math.max(0,totalExpected-totalActual))}</div></div>
+    <div class="stat-card s-net"><div class="slbl">Collection Rate</div><div class="sval">${totalExpected>0?Math.round((totalActual/totalExpected)*100):0}%</div></div>`;
+  const cards=document.getElementById('def-cards');
+  if(cards)cards.innerHTML=rows.map(r=>`
+    <div class="def-card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div><strong style="color:var(--saffron)">${r.van}</strong> <span class="badge b${r.school.toLowerCase()}">${r.school}</span></div>
+        <div style="font-size:.72rem;color:var(--text-dim)">Expected: ${fmt(r.expected)} &nbsp;|&nbsp; Collected: <span style="color:var(--green2)">${fmt(r.actual)}</span></div>
+      </div>
+      <div class="def-bar"><div class="def-fill ${r.pct<60?'low':''}" style="width:${r.pct}%"></div></div>
+      <div style="font-size:.68rem;color:var(--text-muted);margin-top:3px;">${Math.round(r.pct)}% collected</div>
+    </div>`).join('');
+  // Table
+  const t=document.getElementById('t-defaulter');
+  if(t)t.innerHTML=`<thead><tr><th>Van</th><th>School</th><th>Fee/Student</th><th>Expected</th><th>Collected</th><th>Shortfall</th><th>Rate</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.van}</td><td>${r.school}</td><td class="mono">${fmt(r.fee)}</td><td class="mono">${fmt(r.expected)}</td><td class="mono apos">${fmt(r.actual)}</td><td class="mono aneg">${fmt(Math.max(0,r.expected-r.actual))}</td><td><span style="color:${r.pct>=80?'var(--green2)':r.pct>=50?'var(--saffron)':'var(--rose)'}">${Math.round(r.pct)}%</span></td></tr>`).join('')}</tbody>`;
+}
+
+// ═══════════════ AI FORECAST ═══════════════
+async function runAIForecast(){
+  syncNewSectionYears();
+  const btn=document.getElementById('ai-btn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ Analysing...';}
+  const year=document.getElementById('ai-year')?.value||String(YEARS[0]);
+  const sf=CS==="combined"?"all":CS;
+  const out=document.getElementById('ai-output');
+  const thinking=document.getElementById('ai-thinking-card');
+  const insights=document.getElementById('ai-insights');
+  if(out)out.style.display='block';
+  if(thinking)thinking.style.display='block';
+  if(insights)insights.innerHTML='';
+  showAlert('🤖 Claude AI is analysing your financial data...','info',8000);
+  // Build data summary for Claude
+  const inc=sum(qry({school:sf,year,type:"income"}));
+  const exp=sum(qry({school:sf,year,type:"expense"}));
+  const prevYear=String(parseInt(year)-1);
+  const incPrev=sum(qry({school:sf,year:prevYear,type:"income"}));
+  const expPrev=sum(qry({school:sf,year:prevYear,type:"expense"}));
+  const aI=sum(qry({school:sf,year,type:"income",debitAcct:"aided"}));
+  const sI=sum(qry({school:sf,year,type:"income",debitAcct:"self"}));
+  const vI=sum(qry({school:sf,year,type:"income",debitAcct:"van"}));
+  const monthlyInc=MONTHS.map((_,m)=>sum(qry({school:sf,year,type:"income"}).filter(e=>e.month===m)));
+  const monthlyExp=MONTHS.map((_,m)=>sum(qry({school:sf,year,type:"expense"}).filter(e=>e.month===m)));
+  const vanRev=VCFG.map(vn=>({name:vn.name,rev:sum(qry({school:sf,year,type:"income",van:vn.id}))}));
+  const prompt=`You are a financial analyst for Hindu High School & Chathiram Committee, Watrap (India). Analyse this school finance data and provide smart insights.
+
+FINANCIAL DATA - FY ${yrL(year)} (Indian FY: April-March):
+School/Scope: ${sf==="all"?"All 3 Schools":SCHOOLS[sf]?.name}
+Total Income: ₹${Math.round(inc).toLocaleString('en-IN')}
+Total Expense: ₹${Math.round(exp).toLocaleString('en-IN')}
+Net Surplus: ₹${Math.round(inc-exp).toLocaleString('en-IN')}
+Previous Year Income: ₹${Math.round(incPrev).toLocaleString('en-IN')}
+Previous Year Expense: ₹${Math.round(expPrev).toLocaleString('en-IN')}
+Income Growth: ${incPrev>0?((inc-incPrev)/incPrev*100).toFixed(1):'N/A'}%
+
+Income Sources:
+- Aided Fees → VRDCC Bank: ₹${Math.round(aI).toLocaleString('en-IN')}
+- Self Finance Fees: ₹${Math.round(sI).toLocaleString('en-IN')}
+- Van Fees → TN Grama Bank: ₹${Math.round(vI).toLocaleString('en-IN')}
+
+Monthly Income (Apr-Mar): ${monthlyInc.map((v,i)=>MONTHS[i]+':₹'+Math.round(v/1000)+'K').join(', ')}
+Monthly Expense (Apr-Mar): ${monthlyExp.map((v,i)=>MONTHS[i]+':₹'+Math.round(v/1000)+'K').join(', ')}
+
+Van Revenue: ${vanRev.map(v=>v.name+':₹'+Math.round(v.rev/1000)+'K').join(', ')}
+
+Provide exactly 5 insights in this JSON format (return ONLY JSON, no markdown):
+{"insights":[{"icon":"📈","title":"Title here","text":"2-3 sentence insight in Tamil Nadu school context. Be specific with numbers.","type":"positive|warning|info|critical"},{"icon":"⚠️","title":"...","text":"...","type":"..."},{"icon":"💡","title":"...","text":"...","type":"..."},{"icon":"🏦","title":"...","text":"...","type":"..."},{"icon":"🎯","title":"...","text":"...","type":"..."}],"forecast":{"nextQuarterIncome":0,"confidence":0,"recommendation":"one actionable sentence"}}`;
+  try{
+    const resp=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,messages:[{role:"user",content:prompt}]})
+    });
+    const data=await resp.json();
+    const text=data.content?.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim();
+    const parsed=JSON.parse(text);
+    if(thinking)thinking.style.display='none';
+    const typeColors={positive:'var(--green2)',warning:'var(--saffron)',info:'var(--teal2)',critical:'var(--rose)'};
+    if(insights)insights.innerHTML=`<div class="ai-card"><div class="ai-title">💡 AI-Generated Financial Insights — FY ${yrL(year)}</div>${
+      parsed.insights.map(ins=>`<div class="ai-insight" style="border-left-color:${typeColors[ins.type]||'var(--teal2)'}"><strong>${ins.icon} ${ins.title}</strong><br>${ins.text}</div>`).join('')
+    }${parsed.forecast?`<div style="margin-top:1rem;padding:10px 12px;background:rgba(245,166,35,.1);border-radius:8px;border:1px solid rgba(245,166,35,.25)"><div style="font-size:.72rem;color:var(--saffron);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">🎯 AI Recommendation</div><div style="font-size:.81rem;color:var(--text)">${parsed.forecast.recommendation}</div>${parsed.forecast.nextQuarterIncome?`<div style="margin-top:5px;font-size:.75rem;color:var(--text-dim)">Predicted next quarter income: <strong style="color:var(--gold)">${fmt(parsed.forecast.nextQuarterIncome)}</strong> (${parsed.forecast.confidence}% confidence)</div>`:''}</div>`:''}</div>`;
+    showAlert('✅ AI Forecast generated successfully!','ok',4000);
+  }catch(err){
+    if(thinking)thinking.style.display='none';
+    if(insights)insights.innerHTML=`<div class="ai-card"><div class="ai-title" style="color:var(--rose)">⚠ AI Service Unavailable</div><div style="font-size:.8rem;color:var(--text-dim)">Could not connect to Claude AI. Please check your internet connection and try again.<br><br><strong>Manual Analysis:</strong><br>• Income growth: ${incPrev>0?((inc-incPrev)/incPrev*100).toFixed(1)+'%':'First year data'}<br>• Surplus ratio: ${inc>0?((inc-exp)/inc*100).toFixed(1)+'%':'N/A'}<br>• Highest income month: ${MONTHS[monthlyInc.indexOf(Math.max(...monthlyInc))]}<br>• Van contribution: ${inc>0?((vI/inc)*100).toFixed(1)+'%':'N/A'}</div></div>`;
+    showAlert('⚠ AI forecast failed — showing manual analysis','warn',5000);
+  }
+  if(btn){btn.disabled=false;btn.textContent='✨ Generate Forecast';}
+}
+
+// ═══════════════ REFRESH YEAR SELECTS — extend for new sections ═══════════════
+// Patched via renderDefaulter/runAIForecast calling their own year syncs
+function syncNewSectionYears(){
+  ['def-year','ai-year'].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    const cur=el.value;el.innerHTML=YEARS.map(y=>`<option value="${y}">${yrL(y)}</option>`).join('');
+    if(YEARS.map(String).includes(String(cur)))el.value=cur;
+  });
+}
+
+// ═══════════════ SMART ALERTS ON DATA LOAD ═══════════════
+function runSmartAlerts(){
+  if(!DB||DB.length===0)return;
+  const year=String(YEARS[0]);
+  const sf="all";
+  const tI=sum(qry({school:sf,year,type:"income"}));
+  const tE=sum(qry({school:sf,year,type:"expense"}));
+  const net=tI-tE;
+  setTimeout(()=>{
+    if(tI>0)showAlert(`FY ${yrL(year)} — Income: ${fmt(tI)} | Surplus: ${fmt(net)}`,'ok',6000);
+    // Check if any month had 0 income
+    const zeroMonths=MONTHS.filter((_,m)=>sum(qry({school:sf,year,type:"income"}).filter(e=>e.month===m))===0);
+    if(zeroMonths.length>0)showAlert(`⚠ No income recorded for: ${zeroMonths.join(', ')}`,'warn',8000);
+    // Check expense > income
+    if(tE>tI)showAlert('🔴 Expenses exceed income this year!','err',8000);
+  },2000);
+}
+
+
 </script>
 </body>
 </html>
